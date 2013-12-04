@@ -4,12 +4,14 @@
  */
 
 var express = require('express');
+require('./db');
 var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 
 var app = express();
+
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -31,6 +33,10 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+app.post('/create',routes.create);
+app.get('/delete/:id',routes.destroy);
+app.get('/edit/:id',routes.edit);
+app.post('/update/:id',routes.update);
 app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){

@@ -11,9 +11,14 @@
         <input type = "text" name = "content">
     </form>
     <%todos.forEach(function(todo){%>
-    <p>
-    <a href = "/edit/<%=todo._id%>" title = "update"><%=todo.content%></a>
-    <%=todo.content%><a href = "/delete/<%=todo._id%>" title = "delete">delete</a></p>
+    <p><% if(todo._id == current){%>
+    <form action = "/update/<%= todo._id %>" method = "post" accept-charset = "utf-8">
+        <input type = "text" name = "content" value = "<%= todo.content %>"/>
+    </form>
+    <%}else{%>
+    <a href = "/edit/<%= todo._id %>" title = "Update"><%=todo.content %></a>
+    <%}%>
+    <a href = "/delete/<%=todo._id%>" title = "delete">delete</a></p>
     <%});%>
   </body>
 </html>
