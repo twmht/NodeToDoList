@@ -12,7 +12,7 @@
     </form>
     <%todos.forEach(function(todo){%>
     <p>
-    <a href = "/edit/<%=todo._id%>" title = "update"><%=todo.content%></a>
+    <a href = "/edit/<%=todo._id%>" title = "update"><%=todo.content%>-<%=todo.updated_at%></a>
     <%=todo.content%><a href = "/delete/<%=todo._id%>" title = "delete">delete</a></p>
     <%});%>
   </body>
